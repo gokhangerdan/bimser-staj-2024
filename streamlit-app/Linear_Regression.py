@@ -5,6 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 
+
 # Rastgele bir veri seti oluştur
 np.random.seed(0)
 m2 = 2 * np.random.rand(100, 1)
@@ -46,4 +47,3 @@ plt.xlabel('Metrekare')
 plt.ylabel('Fiyat')
 plt.legend()
 plt.show()
-

@@ -1,33 +1,22 @@
 import pandas as pd
 import numpy as np
-
-# Rastgele bir veri seti oluştur
-np.random.seed(0)
-df = pd.DataFrame({
-    'feature1': np.random.rand(100),
-    'feature2': np.random.rand(100),
-    'target': np.random.randint(0, 2, 100)
-})
-
-df.to_csv('example_data.csv', index=False)
-
-import pandas as pd
-import numpy as np
-
-# Rastgele bir veri seti oluştur
-np.random.seed(0)
-df = pd.DataFrame({
-    'feature1': np.random.rand(100),
-    'feature2': np.random.rand(100),
-    'target': np.random.randint(0, 2, 100)
-})
-
-df.to_csv('example_data.csv', index=False)
-
+import streamlit as st
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
+import matplotlib.pyplot as plt
+
+
+# Rastgele bir veri seti oluştur
+np.random.seed(0)
+df = pd.DataFrame({
+    'feature1': np.random.rand(100),
+    'feature2': np.random.rand(100),
+    'target': np.random.randint(0, 2, 100)
+})
+
+df.to_csv('example_data.csv', index=False)
 
 # Veriyi yükle
 df = pd.read_csv('example_data.csv')
@@ -50,12 +39,6 @@ y_pred = model.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 
 print(f'Model Accuracy: {accuracy:.2f}')
-import streamlit as st
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
-import matplotlib.pyplot as plt
 
 # Başlık
 st.title('Random Forest Classifier')
@@ -93,6 +76,3 @@ ax.set_xlabel('Importance')
 ax.set_ylabel('Feature')
 ax.set_title('Feature Importances')
 st.pyplot(fig)
-
-
-
