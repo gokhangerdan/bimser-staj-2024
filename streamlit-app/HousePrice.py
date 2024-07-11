@@ -19,7 +19,7 @@ from scipy.stats import skew
 import warnings
 warnings.filterwarnings(action="ignore")
 
-matplotlib.use('TkAgg')
+#matplotlib.use('TkAgg')  # GG: Buna gerek yok
 
 # Dosya yollarının tanımlanması
 train_path = 'data/train.csv'
@@ -41,6 +41,8 @@ model_option = st.selectbox(
     ("Linear Regression", "K-Nearest Neighbors", "Random Forest")
 )
 
+# GG: Burada imputation olup olmayacağını seçtirme. burada yaptığın zaten preprocessing.
+# GG: Ayrıca preprocess aşamasından geçirmeden modele veriyi veremezsin
 # Veri durumu seçimi
 data_option = st.selectbox(
     "Choose data preprocessing option:",
@@ -106,7 +108,14 @@ if st.button("Train Model"):
     y = target
 
     # Eğitim ve test setlerine bölme
+    # GG: Aşağıdaki X, y aynı uzunlukta olmalı
+    st.write(len(X))
+    st.write(len(y))
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    # GG: Buradan modele vereceğin veriyi kontrol et
+    st.write(X_train)
+    st.write(y_train)
 
     # Model eğitimi
     model.fit(X_train, y_train)
