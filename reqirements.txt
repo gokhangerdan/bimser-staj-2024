@@ -2,3 +2,7 @@ streamlit==1.36.0
 pandas==2.2.2
 scikit_learn==1.5.1
 matplotlib==3.9.1
+fastapi==0.100.1
+uvicorn==0.22.0
+requests==2.31.0
+jsonpickle==3.0.1
